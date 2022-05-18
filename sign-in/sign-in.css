@@ -1,0 +1,39 @@
+:root{
+    --primary: #333333;
+    --primary-text: #ffffff;
+    --secondary: rgb(208, 0, 208);
+    --secondary-text: #c5c5c5;
+    --secondary-bg: rgba(0, 0, 0, 0.2);
+}
+
+body{
+    background-color: var(--primary);
+    color: var(--primary-text);
+}
+
+.sign-in-card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--secondary-bg);
+    padding: 50px;
+    border-radius: 15px;
+}
+
+.sign-in-card:first-child{
+    margin: 10px;
+}
+
+input{
+    margin:10px;
+    padding: 10px;
+    border-radius: 15px;
+    outline:none;
+    border: none;
+}
+
+input:focus{
+    border: 2px solid var(--secondary-bg);
+}
+
