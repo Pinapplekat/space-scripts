@@ -6,9 +6,14 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const fs = require('fs')
 var fileName = 'data.json'
+app.use('/uploads', express.static(__dirname + '/uploads/'));
 app.use("/home", express.static('./home/'));
 app.get('/home', (req, res) => {
   res.sendFile(__dirname + '/home/home.html');
+});
+app.use("/sign-in", express.static('./sign-in/'));
+app.get('/sign-in', (req, res) => {
+  res.sendFile(__dirname + '/sign-in/sign-in.html');
 });
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
@@ -16,6 +21,7 @@ app.get('/', (req, res) => {
 app.get('/data.json', (req, res) => {
     res.sendFile(__dirname + '/data.json');
 });
+
 
 io.on('connection', (socket) => {
     console.log('a user connected');
@@ -30,15 +36,18 @@ io.on('connection', (socket) => {
         io.emit('data-change', m)
     });
     socket.on('file', (data) => {
-        const date = new Date()
         var img = data.split('..')[0]
         var name = data.split('..')[1]
         var imgData = img.replace(/^data:image\/\w+;base64,/, "");
         var buf = Buffer.from(imgData, 'base64');
         
-        console.log(`/uploads/${date.getMilliseconds()}${date.getDay()}${date.getFullYear()}${date.getDate()}${name}`)
-        fs.writeFile(__dirname+`/uploads/${date.getMilliseconds()}${date.getDay()}${date.getFullYear()}${date.getDate()}${name}`, buf, function(err) {
-            if(err) throw err;
+        console.log(__dirname + `/uploads/${name}`)
+        
+        fs.writeFile(__dirname+`/uploads/${name}`, buf, (err) => {
+            if(err){
+                console.log(util.inspect(err));
+                
+            }
             console.log('File created successfully')
         })
     })

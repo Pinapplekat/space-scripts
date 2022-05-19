@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <script src="home.js" defer></script>
+    <title>Space Scipts</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-bar">
+            <a class="url sign-in" id="sign-in-btn" href="../sign-in">Sign In</a>
+            <a class="url sign-in" style="display: none;" id="editBtn">Add</a>
+        </div>
+    </nav>
+    <div class="card-body">
+        <div class="holder" id="h-1">
+            <button id="car-left" class="car"><</button>
+            <div class="content" id="c-1">
+                <div class="card">
+                    <img draggable="false" src="roblox-studio-light.png" alt="" class="image">
+                    <div class="card-info">
+                        <p class="card-text">Boblox Again</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img draggable="false" src="roblox-studio-light.png" alt="" class="image">
+                    <div class="card-info">
+                        <p class="card-text">Boblox Again</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img draggable="false" src="roblox-studio-light.png" alt="" class="image">
+                    <div class="card-info">
+                        <p class="card-text">Boblox Again</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img draggable="false" src="roblox-studio-light.png" alt="" class="image">
+                    <div class="card-info">
+                        <p class="card-text">Boblox Again</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img draggable="false" src="roblox-studio-light.png" alt="" class="image">
+                    <div class="card-info">
+                        <p class="card-text">Boblox Again</p>
+                    </div>
+                </div>
+            </div>
+            <button id="car-right" class="car">></button>
+            
+        </div>
+        
+        <div id="editFormContainer" style="display: none;">
+            <form id="editForm">
+                <label class="text-white large" for="title">Title</label>
+                <br>
+                <input type="text" id="title" required>
+                <br>
+                <label for="image" class="url">Select Image</label>
+                <input style="display: none;" type="file" accept="image/*" id="image"><span id="fileName" class="text-white" required>File Name</span>
+                <br>
+                <input type="submit" value="Enter">
+            </form>
+        </div>
+
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+</body>
+</html>
